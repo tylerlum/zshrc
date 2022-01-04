@@ -100,18 +100,62 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/tylerlum/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/home/tylerlum/miniconda3/etc/profile.d/conda.sh" ]; then
-        . "/home/tylerlum/miniconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/home/tylerlum/miniconda3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
 
+## ROS commands
+## source /opt/ros/melodic/setup.zsh
+## alias killgazebogym='killall -9 rosout roslaunch rosmaster gzserver nodelet robot_state_publisher gzclient'
+
+## MATLAB commands
+## alias killmatlab='killall -9 /usr/local/MATLAB/R2019a/bin/glnxa64/MATLAB'
+
+## POLO Software Mujoco and MJRL
+## Commenting out for now to keep python path clean
+## export PYTHONPATH=home/tylerlum/github_repos/trajopt:$PYTHONPATH
+## export LD_LIBRARY_PATH="/home/tylerlum/.mujoco/mujoco200/bin:$LD_LIBRARY_PATH"
+## export MUJOCO_PY_FORCE_CPU=True
+## alias MJPL='LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libGLEW.so:/usr/lib/nvidia-384/libGL.so'
+
+## Source Sailbot workspace
+## source /home/tylerlum/catkin_ws/devel/setup.zsh
+
+## TODO: Add message about if python2 or python3 is being used
+## USE_RLGPU_V3=false  # SET THIS
+## if $USE_RLGPU_V3; then
+##   echo "USE_RLGPU_V3 flag set"
+##
+##   # >>> conda initialize >>>
+##   # !! Contents within this block are managed by 'conda init' !!
+##   __conda_setup="$('/home/tylerlum/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+##   if [ $? -eq 0 ]; then
+##       eval "$__conda_setup"
+##   else
+##       if [ -f "/home/tylerlum/anaconda3/etc/profile.d/conda.sh" ]; then
+##           . "/home/tylerlum/anaconda3/etc/profile.d/conda.sh"
+##       else
+##           export PATH="/home/tylerlum/anaconda3/bin:$PATH"
+##       fi
+##   fi
+##   unset __conda_setup
+##   # <<< conda initialize <<<
+##
+##   # Deactive conda
+##   conda deactivate
+##
+##   # Make python default to python3
+##   alias python=python3
+##   alias pip=pip3
+##   alias killpython='killall -KILL python3 python python2'
+##
+##   # Mujoco
+##   export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/home/tylerlum/.mujoco/mujoco200/bin
+##   export LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libGLEW.so
+##
+##   # Setup ISAAC GYM conda env
+##   conda activate rlgpu_v3
+##
+##   # Setup Python path for ISAAC GYM
+##   export LD_LIBRARY_PATH=/home/tylerlum/anaconda3/envs/rlgpu_v3/lib/
+##   export PYTHONPATH=$PYTHON_PATH:/home/tylerlum/MOCCA/laikago_rl-master-a2729755-sim_and_common-python_only/
+##   export RAISIM_WORKSPACE=/home/tylerlum/MOCCA/isaacgym-dda-heightfield-7cf1cb84
+##   cd /home/tylerlum/MOCCA/laikago_rl-master-a2729755-sim_and_common-python_only/sim
+## fi
