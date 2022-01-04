@@ -121,7 +121,7 @@ alias killpython='killall -KILL python3 python python2'
 source /home/tylerlum/sailbot_ws/devel/setup.zsh
 
 ## Setup Python env
-USE_PYTHON_3=false  # SET THIS
+USE_PYTHON_3=true  # SET THIS
 echo "USE_PYTHON_3 is $USE_PYTHON_3"
 
 if $USE_PYTHON_3; then
@@ -141,29 +141,29 @@ if $USE_PYTHON_3; then
   # <<< default conda initialize <<<
 
   # >>> select conda env >>>
-  ## USE_RLGPU_V3=false  # SET THIS
-  ## if $USE_RLGPU_V3; then
-  ##   echo "USE_RLGPU_V3 flag set"
-  ##
-  ##   # Deactivate conda
-  ##   conda deactivate
-  ##
-  ##   # Make python default to python3
-  ##   alias python=python3
-  ##   alias pip=pip3
-  ##
-  ##   # Mujoco
-  ##   export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/home/tylerlum/.mujoco/mujoco200/bin
-  ##   export LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libGLEW.so
-  ##
-  ##   # Setup ISAAC GYM conda env
-  ##   conda activate rlgpu_v3
-  ##
-  ##   # Setup Python path for ISAAC GYM
-  ##   export LD_LIBRARY_PATH=/home/tylerlum/anaconda3/envs/rlgpu_v3/lib/
-  ##   export PYTHONPATH=$PYTHON_PATH:/home/tylerlum/MOCCA/laikago_rl-master-a2729755-sim_and_common-python_only/
-  ##   export RAISIM_WORKSPACE=/home/tylerlum/MOCCA/isaacgym-dda-heightfield-7cf1cb84
-  ##   cd /home/tylerlum/MOCCA/laikago_rl-master-a2729755-sim_and_common-python_only/sim
-  ## fi
+  USE_RLGPU=true  # SET THIS
+  if $USE_RLGPU; then
+    echo "USE_RLGPU flag set"
+
+    # Deactivate conda
+    conda deactivate
+
+    # Make python default to python3
+    alias python=python3
+    alias pip=pip3
+
+    # Mujoco
+    export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/home/tylerlum/.mujoco/mujoco200/bin
+    export LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libGLEW.so
+
+    # Setup ISAAC GYM conda env
+    conda activate rlgpu
+
+    # Setup Python path for ISAAC GYM
+    export LD_LIBRARY_PATH=/home/tylerlum/miniconda3/envs/rlgpu/lib/
+    export PYTHONPATH=$PYTHON_PATH:/home/tylerlum/MOCCA/laikago_rl-master-a2729755-sim_and_common-python_only/
+    export RAISIM_WORKSPACE=/home/tylerlum/MOCCA/isaacgym
+    cd /home/tylerlum/MOCCA/laikago_rl-master-a2729755-sim_and_common-python_only/sim
+  fi
   # <<< select conda env <<<
 fi
