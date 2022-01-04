@@ -1,3 +1,4 @@
+# <<< Default oh my zsh <<<
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
@@ -99,10 +100,10 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-
+# >>> Default oh my zsh >>>
 
 ## ROS commands
-## source /opt/ros/melodic/setup.zsh
+source /opt/ros/melodic/setup.zsh
 
 ## Kill commands
 alias killpython='killall -KILL python3 python python2'
@@ -117,10 +118,10 @@ alias killpython='killall -KILL python3 python python2'
 ## alias MJPL='LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libGLEW.so:/usr/lib/nvidia-384/libGL.so'
 
 ## Source Sailbot workspace
-## source /home/tylerlum/catkin_ws/devel/setup.zsh
+source /home/tylerlum/sailbot_ws/devel/setup.zsh
 
 ## Setup Python env
-USE_PYTHON_3=true  # SET THIS
+USE_PYTHON_3=false  # SET THIS
 echo "USE_PYTHON_3 is $USE_PYTHON_3"
 
 if $USE_PYTHON_3; then
