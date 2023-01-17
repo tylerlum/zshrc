@@ -153,17 +153,27 @@ if $USE_PYTHON_3; then
     alias pip=pip3
 
     # Mujoco
-    export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/home/tylerlum/.mujoco/mujoco200/bin
+    export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/home/tylerlum/.mujoco/mujoco210/bin:/usr/lib/nvidia
     export LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libGLEW.so
 
     # Setup ISAAC GYM conda env
     conda activate rlgpu
 
     # Setup Python path for ISAAC GYM
-    export LD_LIBRARY_PATH=/home/tylerlum/miniconda3/envs/rlgpu/lib/
+    export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/home/tylerlum/miniconda3/envs/rlgpu/lib/
     export PYTHONPATH=$PYTHON_PATH:/home/tylerlum/MOCCA/laikago_rl-master-a2729755-sim_and_common-python_only/
     export RAISIM_WORKSPACE=/home/tylerlum/MOCCA/isaacgym
-    cd /home/tylerlum/MOCCA/laikago_rl-master-a2729755-sim_and_common-python_only/sim
+    # cd /home/tylerlum/MOCCA/laikago_rl-master-a2729755-sim_and_common-python_only/sim
   fi
   # <<< select conda env <<<
 fi
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# Latex
+#
+export MANPATH=/usr/local/texlive/2022/texmf-dist/doc/man:$MANPATH
+export INFOPATH=/usr/local/texlive/2022/texmf-dist/doc/info:$INFOPATH
+export PATH=/usr/local/texlive/2022/bin/x86_64-linux:$PATH
