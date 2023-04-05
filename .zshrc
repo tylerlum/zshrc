@@ -1,4 +1,3 @@
-# <<< Default oh my zsh <<<
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
@@ -53,7 +52,7 @@ ZSH_THEME="robbyrussell"
 # Uncomment the following line if you want to disable marking untracked files
 # under VCS as dirty. This makes repository status check for large repositories
 # much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
+DISABLE_UNTRACKED_FILES_DIRTY="true"
 
 # Uncomment the following line if you want to change the command execution time
 # stamp shown in the history command output.
@@ -71,6 +70,7 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
+# plugins=(git vi-mode)
 plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
@@ -100,85 +100,10 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-# >>> Default oh my zsh >>>
-
-## ROS commands
-source /opt/ros/melodic/setup.zsh
-
-## Kill commands
-alias killpython='killall -KILL python3 python python2'
-## alias killgazebogym='killall -9 rosout roslaunch rosmaster gzserver nodelet robot_state_publisher gzclient'
-## alias killmatlab='killall -9 /usr/local/MATLAB/R2019a/bin/glnxa64/MATLAB'
-
-## POLO Software Mujoco and MJRL
-## Commenting out for now to keep python path clean
-## export PYTHONPATH=home/tylerlum/github_repos/trajopt:$PYTHONPATH
-## export LD_LIBRARY_PATH="/home/tylerlum/.mujoco/mujoco200/bin:$LD_LIBRARY_PATH"
-## export MUJOCO_PY_FORCE_CPU=True
-## alias MJPL='LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libGLEW.so:/usr/lib/nvidia-384/libGL.so'
-
-## Source Sailbot workspace
-source /home/tylerlum/sailbot_ws/devel/setup.zsh
-
-## Setup Python env
-USE_PYTHON_3=true  # SET THIS
-echo "USE_PYTHON_3 is $USE_PYTHON_3"
-
-if $USE_PYTHON_3; then
-  # >>> default conda initialize >>>
-  # !! Contents within this block are managed by 'conda init' !!
-  __conda_setup="$('/home/tylerlum/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-  if [ $? -eq 0 ]; then
-      eval "$__conda_setup"
-  else
-      if [ -f "/home/tylerlum/miniconda3/etc/profile.d/conda.sh" ]; then
-          . "/home/tylerlum/miniconda3/etc/profile.d/conda.sh"
-      else
-          export PATH="/home/tylerlum/miniconda3/bin:$PATH"
-      fi
-  fi
-  unset __conda_setup
-  # <<< default conda initialize <<<
-
-  # >>> select conda env >>>
-  USE_RLGPU=true  # SET THIS
-  if $USE_RLGPU; then
-    echo "USE_RLGPU flag set"
-
-    # Deactivate conda
-    conda deactivate
-
-    # Make python default to python3
-    alias python=python3
-    alias pip=pip3
-
-    # Mujoco
-    export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/home/tylerlum/.mujoco/mujoco210/bin:/usr/lib/nvidia
-    export LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libGLEW.so
-
-    # Setup ISAAC GYM conda env
-    conda activate rlgpu
-
-    # Setup Python path for ISAAC GYM
-    export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/home/tylerlum/miniconda3/envs/rlgpu/lib/
-    export PYTHONPATH=$PYTHON_PATH:/home/tylerlum/MOCCA/laikago_rl-master-a2729755-sim_and_common-python_only/
-    export RAISIM_WORKSPACE=/home/tylerlum/MOCCA/isaacgym
-    # cd /home/tylerlum/MOCCA/laikago_rl-master-a2729755-sim_and_common-python_only/sim
-  fi
-  # <<< select conda env <<<
-fi
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-# Latex
 #
-export MANPATH=/usr/local/texlive/2022/texmf-dist/doc/man:$MANPATH
-export INFOPATH=/usr/local/texlive/2022/texmf-dist/doc/info:$INFOPATH
-export PATH=/usr/local/texlive/2022/bin/x86_64-linux:$PATH
+#
 
-# Log all terminal outputs to file: https://unix.stackexchange.com/questions/200637/save-all-the-terminal-output-to-a-file
+# Log all terminal outputs to file
 
 # Execute "script" command just once
 smart_script(){
@@ -238,7 +163,7 @@ savelog(){
     printf 'Saved logs:\n    '$txtfile'\n    '$rawfile'\n'
 }
 
-# Nicer printing: https://unix.stackexchange.com/questions/262185/display-file-with-ansi-colors
+
 print_with_color(){
   if [ $# -eq 0 ]
   then
@@ -250,6 +175,73 @@ print_with_color(){
   fi
 }
 
-# Makes it log to raw by default
-# Can use startnewlog and savelog to manually start new log or save log
-smart_script
+# smart_script
+# 
+# 
+# # TYLER ADDITION
+# source /iris/u/tylerlum/github_repos/language_modulated_representation_learning/lmrl_env/bin/activate
+# cd /iris/u/tylerlum/github_repos/language_modulated_representation_learning
+# eval "$(python panda_env_runner.py -sc install=bash)"
+# eval "$(python train_bc.py -sc install=bash)"
+
+
+# eval "$(/iris/u/tylerlum/miniconda3/bin/conda shell.zsh hook)"
+# conda init zsh
+
+# echo "Running IRIS conda initialize..."
+# # >>> conda initialize >>>
+# # !! Contents within this block are managed by 'conda init' !!
+# __conda_setup="$('/iris/u/tylerlum/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+# if [ $? -eq 0 ]; then
+#     eval "$__conda_setup"
+# else
+#     if [ -f "/iris/u/tylerlum/miniconda3/etc/profile.d/conda.sh" ]; then
+#         . "/iris/u/tylerlum/miniconda3/etc/profile.d/conda.sh"
+#     else
+#         export PATH="/iris/u/tylerlum/miniconda3/bin:$PATH"
+#     fi
+# fi
+# unset __conda_setup
+# # <<< conda initialize <<<
+# echo "Done running IRIS conda initialize"
+
+echo "Running BOHG conda initialize..."
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/iris/u/tylerlum/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/iris/u/tylerlum/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/iris/u/tylerlum/miniconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/iris/u/tylerlum/miniconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+echo "Done BOHG running conda initialize"
+
+
+
+conda activate lmrl_env_2
+
+cd /iris/u/tylerlum/github_repos/lmrl_v2
+
+echo "Running tab completion for panda_env_runner..."
+eval "$(python panda_env_runner.py -sc install=bash)"
+echo "Done running tab completion for panda_env_runner"
+
+echo "Running stty -ixon..."
+stty -ixon
+echo "Done running stty -ixon"
+
+echo "Running fzf..."
+source /usr/share/doc/fzf/examples/key-bindings.zsh
+source /usr/share/doc/fzf/examples/completion.zsh
+echo "Done running fzf"
+
+export VI_MODE_SET_CURSOR=true
+export VI_MODE_CURSOR_INSERT=1
+export VI_MODE_CURSOR_VISUAL=1
+export KEYTIMEOUT=1
